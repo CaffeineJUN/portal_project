@@ -52,6 +52,14 @@ public class DiaryService {
         return collect;
     }
 
+    @Transactional
+    public void deleteDiary(Long diaryId) {
+        Optional<Diary> byId = diaryRepository.findById(diaryId);
+        byId.orElseThrow(()->new IllegalArgumentException("다이어리가 없습니다."));
+        Diary diary = byId.get();
+        diaryRepository.delete(diary);
+    }
+
     public String save(MultipartFile file) {
         UUID uuid = UUID.randomUUID();
         File dest = new File("./images/" + uuid + ".jpg");

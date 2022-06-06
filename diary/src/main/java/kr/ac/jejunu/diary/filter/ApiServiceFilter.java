@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Slf4j
-public class ApiServiceFilter extends OncePerRequestFilter  {
+public class ApiServiceFilter extends OncePerRequestFilter {
     private final String[] whitelist={"/","/api/login","/api/logout","/api/register"};
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
