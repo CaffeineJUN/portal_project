@@ -9,10 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -58,6 +55,12 @@ public class UserApiController {
     @PutMapping("/api/user/update")
     public ResponseDto userUpdate(@Login User user,@RequestBody Map<String,String> password){
         userService.userUpdate(user,password.get("password"));
-        return new ResponseDto(202,"Test");
+        return new ResponseDto(202,"업데이트가 완료되었습니다.");
+    }
+
+    @DeleteMapping("/api/user/delete")
+    public ResponseDto userDelete(@Login User user){
+        userService.delete(user);
+        return new ResponseDto(202,"사용자 제거가 완료되었습니다.");
     }
 }

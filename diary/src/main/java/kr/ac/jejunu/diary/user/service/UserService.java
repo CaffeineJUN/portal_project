@@ -55,6 +55,11 @@ public class UserService {
         Optional<User> id = userRepository.findById(user.getId());
         User user1 = id.get();
         user1.setPassword(BCrypt.hashpw(password,BCrypt.gensalt()));
+    }
 
+    @Transactional
+    public void delete(User user) {
+        Optional<User> byId = userRepository.findById(user.getId());
+        userRepository.delete(byId.get());
     }
 }
