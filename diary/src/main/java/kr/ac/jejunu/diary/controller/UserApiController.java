@@ -25,12 +25,12 @@ public class UserApiController {
 
     private final UserService userService;
 
-    @PostMapping("/signup")
+    @PostMapping("/api/signup")
     public ResponseDto signUp(@RequestBody UserSignRequestDto userSignRequestDto){
         return userService.signUp(userSignRequestDto);
     }
 
-    @PostMapping("/login")
+    @PostMapping("/api/login")
     public ResponseEntity<ResponseDto> logIn(@RequestBody UserSignRequestDto userSignRequestDto, HttpServletRequest httpServletRequest){
         Optional<User> optionalUser = userService.logIn(userSignRequestDto);
         if(optionalUser.isPresent()){
@@ -43,7 +43,7 @@ public class UserApiController {
         }
     }
 
-    @PostMapping("/logout")
+    @PostMapping("/api/logout")
     public ResponseDto logout(HttpServletRequest httpServletRequest){
         HttpSession session = httpServletRequest.getSession(false);
         if(session!=null){
