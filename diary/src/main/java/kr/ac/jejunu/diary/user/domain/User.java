@@ -1,5 +1,7 @@
 package kr.ac.jejunu.diary.user.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import kr.ac.jejunu.diary.diary.domain.Diary;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,6 +22,7 @@ public class User {
     private String userId;
     private String password;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonBackReference
     private List<Diary> diaryArrayList=new ArrayList<>();
 }

@@ -15,8 +15,10 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -36,7 +38,18 @@ public class DiaryService {
         }
         diary.addUser(user1);
         diaryRepository.save(diary);
-        return new AddDiaryResponseDto(diary.getImagePath(),diary.getContent());
+        return new AddDiaryResponseDto(diary.getId(),diary.getImagePath(),diary.getContent());
+    }
+
+    @Transactional
+    public List<AddDiaryResponseDto> getAllDiary(User user) {
+        User user1 = userRepository.findById(user.getId()).get();
+        List<Diary> diaryArrayList = user1.getDiaryArrayList();
+        List<AddDiaryResponseDto> collect = diaryArrayList.stream().map(diary -> {
+            return new AddDiaryResponseDto(diary.getId(), diary.getImagePath(), diary.getContent());
+        })
+                .collect(Collectors.toList());
+        return collect;
     }
 
     public String save(MultipartFile file) {

@@ -1,5 +1,6 @@
 package kr.ac.jejunu.diary.diary.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import kr.ac.jejunu.diary.user.domain.User;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,6 +19,7 @@ public class Diary {
 
     @ManyToOne
     @JoinColumn(name = "userId")
+    @JsonManagedReference
     private User user;
 
     public void addUser(User user){
