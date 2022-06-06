@@ -29,14 +29,6 @@ public class UserService {
         return new ResponseDto(202,"회원가입이 완료되었습니다.");
     }
 
-
-    private void checkUser(UserSignRequestDto userSignRequestDto) {
-        Optional<User> byUserId = userRepository.findByUserId(userSignRequestDto.getUserId());
-        if(byUserId.isPresent()){
-            throw new IllegalArgumentException("회원가입 실패");
-        }
-    }
-
     @Transactional
     public Optional<User> logIn(UserSignRequestDto userSignRequestDto) {
         Optional<User> optionalUser = userRepository.findByUserId(userSignRequestDto.getUserId());
@@ -55,11 +47,19 @@ public class UserService {
         Optional<User> id = userRepository.findById(user.getId());
         User user1 = id.get();
         user1.setPassword(BCrypt.hashpw(password,BCrypt.gensalt()));
+
     }
 
     @Transactional
     public void delete(User user) {
         Optional<User> byId = userRepository.findById(user.getId());
         userRepository.delete(byId.get());
+    }
+
+    private void checkUser(UserSignRequestDto userSignRequestDto) {
+        Optional<User> byUserId = userRepository.findByUserId(userSignRequestDto.getUserId());
+        if(byUserId.isPresent()){
+            throw new IllegalArgumentException("회원가입 실패");
+        }
     }
 }

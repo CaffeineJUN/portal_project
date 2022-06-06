@@ -23,7 +23,7 @@ public class UserApiController {
 
     private final UserService userService;
 
-    @PostMapping("/api/signup")
+    @PostMapping("/api/register")
     public ResponseDto signUp(@RequestBody UserSignRequestDto userSignRequestDto){
         return userService.signUp(userSignRequestDto);
     }
