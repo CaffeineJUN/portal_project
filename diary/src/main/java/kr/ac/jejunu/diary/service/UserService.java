@@ -33,4 +33,16 @@ public class UserService {
             throw new IllegalArgumentException("회원가입 실패");
         }
     }
+
+    public Optional<User> logIn(UserSignRequestDto userSignRequestDto) {
+        Optional<User> optionalUser = userRepository.findByUserId(userSignRequestDto.getUserId());
+        if(optionalUser.isPresent()){
+            User user = optionalUser.get();
+            if(BCrypt.checkpw(userSignRequestDto.getPassword(), user.getPassword())){
+                return Optional.of(user);
+            }
+            return Optional.empty();
+        }
+        return Optional.empty();
+    }
 }
