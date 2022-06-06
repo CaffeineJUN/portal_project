@@ -1,6 +1,6 @@
 package kr.ac.jejunu.diary.filter;
 
-import kr.ac.jejunu.diary.domain.User;
+import kr.ac.jejunu.diary.user.domain.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.PatternMatchUtils;
 import org.springframework.web.filter.OncePerRequestFilter;

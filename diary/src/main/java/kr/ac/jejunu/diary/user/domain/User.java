@@ -1,4 +1,4 @@
-package kr.ac.jejunu.diary.domain;
+package kr.ac.jejunu.diary.user.domain;
 
 import lombok.Getter;
 import lombok.Setter;

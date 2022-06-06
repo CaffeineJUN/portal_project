@@ -1,22 +1,23 @@
-package kr.ac.jejunu.diary.controller;
+package kr.ac.jejunu.diary.user.controller;
 
-import kr.ac.jejunu.diary.domain.User;
-import kr.ac.jejunu.diary.dto.ResponseDto;
-import kr.ac.jejunu.diary.dto.UserSignRequestDto;
-import kr.ac.jejunu.diary.service.UserService;
+import kr.ac.jejunu.diary.resolver.Login;
+import kr.ac.jejunu.diary.user.domain.User;
+import kr.ac.jejunu.diary.user.dto.ResponseDto;
+import kr.ac.jejunu.diary.user.dto.UserSignRequestDto;
+import kr.ac.jejunu.diary.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
+import java.util.Map;
 
 @Slf4j
 @RestController
@@ -35,7 +36,9 @@ public class UserApiController {
         Optional<User> optionalUser = userService.logIn(userSignRequestDto);
         if(optionalUser.isPresent()){
             HttpSession session = httpServletRequest.getSession(true);
-            session.setAttribute("user",optionalUser.get());
+            User user = optionalUser.get();
+            log.info("로그인:{}",user.getUserId());
+            session.setAttribute("user", user);
             return new ResponseEntity<ResponseDto>(new ResponseDto(202,"로그인에 성공하였습니다."), HttpStatus.valueOf(202));
         }
         else{
@@ -50,5 +53,11 @@ public class UserApiController {
             session.invalidate();
         }
         return new ResponseDto(202,"로그아웃 되었습니다.");
+    }
+
+    @PutMapping("/api/user/update")
+    public ResponseDto userUpdate(@Login User user,@RequestBody Map<String,String> password){
+        userService.userUpdate(user,password.get("password"));
+        return new ResponseDto(202,"Test");
     }
 }

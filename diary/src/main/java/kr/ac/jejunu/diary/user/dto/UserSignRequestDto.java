@@ -1,4 +1,4 @@
-package kr.ac.jejunu.diary.dto;
+package kr.ac.jejunu.diary.user.dto;
 
 import lombok.Data;
 

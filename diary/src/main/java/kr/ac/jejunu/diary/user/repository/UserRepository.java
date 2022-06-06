@@ -1,6 +1,6 @@
-package kr.ac.jejunu.diary.repository;
+package kr.ac.jejunu.diary.user.repository;
 
-import kr.ac.jejunu.diary.domain.User;
+import kr.ac.jejunu.diary.user.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
