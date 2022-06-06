@@ -42,4 +42,13 @@ public class UserApiController {
             return new ResponseEntity<ResponseDto>(new ResponseDto(401,"로그인에 실패하였습니다."), HttpStatus.valueOf(401));
         }
     }
+
+    @PostMapping("/logout")
+    public ResponseDto logout(HttpServletRequest httpServletRequest){
+        HttpSession session = httpServletRequest.getSession(false);
+        if(session!=null){
+            session.invalidate();
+        }
+        return new ResponseDto(202,"로그아웃 되었습니다.");
+    }
 }
