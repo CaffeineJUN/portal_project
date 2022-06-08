@@ -11,3 +11,14 @@ export const registUser = async dataToSubmit => {
         payload: request,
     }
 }
+
+export const loginUser = async dataToSubmit => {
+    const request = await axios.post('/api/login', dataToSubmit).then(res => {
+        return res.data
+    })
+
+    return {
+        type: types.LOGIN_USER,
+        payload: request,
+    }
+}

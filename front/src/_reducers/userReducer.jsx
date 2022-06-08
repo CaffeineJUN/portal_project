@@ -9,6 +9,12 @@ function userReducer(state = {}, action) {
                 registSuccess: action.payload,
             }
 
+        case types.LOGIN_USER:
+            return {
+                ...state,
+                loginSuccess: action.payload,
+            }
+
         default:
             return state
     }
