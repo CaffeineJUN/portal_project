@@ -66,8 +66,14 @@ public class UserApiController {
 
 //    유저 삭제 기능
     @DeleteMapping("/api/user/delete")
-    public ResponseDto userDelete(@Login User user){
+    public ResponseDto userDelete(@Login User user,HttpServletRequest httpServletRequest){
         userService.delete(user);
+
+        HttpSession session = httpServletRequest.getSession(false);
+        if(session!=null){
+            session.invalidate();
+        }
+        
         return new ResponseDto(202,"사용자 제거가 완료되었습니다.");
     }
 }
