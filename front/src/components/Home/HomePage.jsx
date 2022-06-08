@@ -25,6 +25,9 @@ const HomePage = () => {
             <div>
                 <a href="/register">register</a>
             </div>
+            <div>
+                <a href="/diary">diary</a>
+            </div>
             <button onClick={hadleLogout}>logout</button>
         </div>
     )
