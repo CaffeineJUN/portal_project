@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useDispatch} from 'react-redux'
-import {diaryCreate} from '../../_actions/albumAction'
+import {diaryCreate} from '../../_actions/diaryAction'
 
 const DiaryPage = () => {
     const dispatch = useDispatch()
@@ -32,6 +32,8 @@ const DiaryPage = () => {
             console.log(res)
         })
     }
+
+    useEffect(() => {}, [])
 
     return (
         <div>
