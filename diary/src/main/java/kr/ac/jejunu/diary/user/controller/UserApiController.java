@@ -23,15 +23,18 @@ public class UserApiController {
 
     private final UserService userService;
 
+//    회원가입 기능
     @PostMapping("/api/register")
     public ResponseDto signUp(@RequestBody UserSignRequestDto userSignRequestDto){
         return userService.signUp(userSignRequestDto);
     }
 
+//    로그인 기능
     @PostMapping("/api/login")
     public ResponseEntity<ResponseDto> logIn(@RequestBody UserSignRequestDto userSignRequestDto, HttpServletRequest httpServletRequest){
         Optional<User> optionalUser = userService.logIn(userSignRequestDto);
         if(optionalUser.isPresent()){
+//            로그인 세션 유지
             HttpSession session = httpServletRequest.getSession(true);
             User user = optionalUser.get();
             log.info("로그인:{}",user.getUserId());
@@ -43,8 +46,10 @@ public class UserApiController {
         }
     }
 
+//    로그아웃 기능
     @PostMapping("/api/logout")
     public ResponseDto logout(HttpServletRequest httpServletRequest){
+//        세션을 종료하여 로그아웃 기능 실행
         HttpSession session = httpServletRequest.getSession(false);
         if(session!=null){
             session.invalidate();
@@ -52,12 +57,14 @@ public class UserApiController {
         return new ResponseDto(202,"로그아웃 되었습니다.");
     }
 
+//    유저 정보 수정 기능
     @PutMapping("/api/user/update")
     public ResponseDto userUpdate(@Login User user,@RequestBody Map<String,String> password){
         userService.userUpdate(user,password.get("password"));
         return new ResponseDto(202,"업데이트가 완료되었습니다.");
     }
 
+//    유저 삭제 기능
     @DeleteMapping("/api/user/delete")
     public ResponseDto userDelete(@Login User user){
         userService.delete(user);
