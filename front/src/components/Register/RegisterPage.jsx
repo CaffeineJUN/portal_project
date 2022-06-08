@@ -1,9 +1,12 @@
 import React, {useState} from 'react'
 import {useDispatch} from 'react-redux'
 import {registUser} from '../../_actions/userAction'
+import {useNavigate} from 'react-router-dom'
 
 const RegisterPage = () => {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
+
     const [state, setState] = useState({
         userId: '',
         password: '',
@@ -21,6 +24,7 @@ const RegisterPage = () => {
         // console.log(state)
         dispatch(registUser(state)).then(res => {
             console.log(res)
+            navigate('/login')
         })
     }
 

@@ -1,9 +1,12 @@
 import React, {useState} from 'react'
 import {useDispatch} from 'react-redux'
 import {loginUser} from '../../_actions/userAction'
+import {useNavigate} from 'react-router-dom'
 
 const LoginPage = () => {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
+
     const [state, setState] = useState({
         userId: '',
         password: '',
@@ -21,6 +24,7 @@ const LoginPage = () => {
         // console.log(state)
         dispatch(loginUser(state)).then(res => {
             console.log(res)
+            navigate('/')
         })
     }
 
@@ -34,7 +38,7 @@ const LoginPage = () => {
                 <label htmlFor="">Password</label>
                 <input type="password" name="password" value={password} onChange={handleInput} />
 
-                <button type="submit">Register</button>
+                <button type="submit">Login</button>
             </form>
         </div>
     )
