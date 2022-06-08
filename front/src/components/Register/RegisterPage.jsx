@@ -18,7 +18,7 @@ const RegisterPage = () => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        console.log(state)
+        // console.log(state)
         dispatch(registUser(state)).then(res => {
             console.log(res)
         })
