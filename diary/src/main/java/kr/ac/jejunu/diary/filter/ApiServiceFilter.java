@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+// api 접근 필터링 기존 api 와는 다른 경로로 접근시 403에러
 @Slf4j
 public class ApiServiceFilter extends OncePerRequestFilter {
     private final String[] whitelist={"/","/api/login","/api/logout","/api/register"};
