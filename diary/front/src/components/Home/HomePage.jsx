@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
+import styles from './HomPage.module.css'
 
 const HomePage = () => {
     const navigate = useNavigate()
@@ -13,18 +14,21 @@ const HomePage = () => {
     }
 
     return (
-        <div>
-            <h1>Home</h1>
-            <div>
-                <a href="/login">Login</a>
+        <div className={styles.container}>
+            <div className={styles.nav}>
+                <div>한줄일기</div>
+                <div>
+                    <a href="/diary">다이어리</a>
+                </div>
+                <div>
+                    <a href="/login">로그인</a>
+                </div>
+                <div>
+                    <a href="/register">회원가입</a>
+                </div>
+                <button onClick={hadleLogout}>Logout</button>
             </div>
-            <div>
-                <a href="/register">Register</a>
-            </div>
-            <div>
-                <a href="/diary">Diary</a>
-            </div>
-            <button onClick={hadleLogout}>Logout</button>
+            <div className={styles.back}></div>
         </div>
     )
 }

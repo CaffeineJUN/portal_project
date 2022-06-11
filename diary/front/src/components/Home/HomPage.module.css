@@ -1,0 +1,30 @@
+.container .nav {
+    height: 15vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container .nav div:nth-child(1) {
+    font-size: 1.6rem;
+}
+.container .nav div a {
+    text-decoration: none;
+    color: #000;
+}
+
+.container .nav button {
+    border: none;
+    outline: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: red;
+    color: aliceblue;
+}
+
+.container .back {
+    height: 80vh;
+    background-image: url('https://images.wallpaperscraft.com/image/single/book_diary_bookmark_111541_1920x1200.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
