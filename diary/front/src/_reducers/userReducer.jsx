@@ -15,6 +15,12 @@ function userReducer(state = {}, action) {
                 loginSuccess: action.payload,
             }
 
+        case types.UPDATE_USER:
+            return {
+                ...state,
+                updateSuccess: action.payload,
+            }
+
         default:
             return state
     }

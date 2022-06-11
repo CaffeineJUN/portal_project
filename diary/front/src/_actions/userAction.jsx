@@ -23,3 +23,13 @@ export const loginUser = async dataToSubmit => {
     }
 }
 
+export const updateUser = async dataToSubmit => {
+    const request = await axios.put('/api/user/update', dataToSubmit).then(res => {
+        return res.data
+    })
+
+    return {
+        type: types.UPDATE_USER,
+        payload: request,
+    }
+}

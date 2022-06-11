@@ -8,13 +8,10 @@ const HomePage = () => {
 
     const hadleLogout = () => {
         axios.post('/api/logout').then(res => {
-            console.log(res.data)
+            console.log(res)
             navigate('/')
         })
     }
-
-    const user = useSelector(state => state.user)
-    console.log(user)
 
     return (
         <div>

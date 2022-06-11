@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react'
 import {useDispatch} from 'react-redux'
-import {useNavigate} from 'react-router-dom'
 import {diaryCreate, diaryShow} from '../../_actions/diaryAction'
 
 const DiaryPage = () => {
@@ -59,6 +58,7 @@ const DiaryPage = () => {
         <div>
             <div>
                 <a href="/">Home</a>
+                <a href="/updateUser">Update userinfo</a>
             </div>
             <form onSubmit={hadleSubmit}>
                 <label htmlFor="">한줄일기</label>
