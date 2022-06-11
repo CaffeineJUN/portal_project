@@ -13,7 +13,30 @@
     padding: 5px;
 }
 
+.container > h1 {
+    font-size: 1.5rem;
+    margin: 10px 20px;
+}
+
 .container > form {
+    margin-left: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.container > form > textarea {
+    width: 30%;
+    outline: none;
+    margin-right: 20px;
+}
+
+.container > form > button {
+    border: none;
+    outline: none;
+    padding: 5px 10px;
+    background-color: #8c59b9;
+    color: #fff;
+    border-radius: 5px;
 }
 
 .container > ul {

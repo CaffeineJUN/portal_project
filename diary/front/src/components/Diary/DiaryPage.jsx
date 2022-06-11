@@ -59,10 +59,12 @@ const DiaryPage = () => {
                 <li
                     key={index}
                     onMouseEnter={e => {
-                        e.target.children[2].className = `${styles.showBtn}`
+                        // e.target.children[2].className = `${styles.showBtn}`
+                        e.target.children[2] && e.target.children[2].classList.add(`${styles.showBtn}`)
                     }}
                     onMouseLeave={e => {
-                        e.target.children[2].className = ``
+                        // e.target.children[2].className = ``
+                        e.target.children[2] && e.target.children[2].classList.remove(`${styles.showBtn}`)
                     }}
                 >
                     <div>
@@ -84,11 +86,12 @@ const DiaryPage = () => {
         <div className={styles.container}>
             <div>
                 <a href="/">Home</a>
-                <a href="/updateUser">Update userinfo</a>
+                <a href="/updateUser">회원정보 수정</a>
             </div>
+            <h1>한줄 일기</h1>
             <form onSubmit={hadleSubmit}>
-                <label htmlFor="">한줄일기</label>
-                <input type="text" name="text" value={text} onChange={handleInputChange} />
+                {/* <label htmlFor="">한줄일기</label> */}
+                <textarea type="text" name="text" value={text} onChange={handleInputChange} />
                 <input type="file" name="image" />
                 <button type="submit">쓰기</button>
             </form>
