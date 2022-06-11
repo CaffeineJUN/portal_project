@@ -3,6 +3,7 @@ import {useDispatch} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import {updateUser} from '../../_actions/userAction'
 import axios from 'axios'
+import {FcAdvance} from 'react-icons/fc'
 
 import styles from './UpdatePage.module.css'
 
@@ -47,6 +48,9 @@ const UpdatePage = () => {
             </form>
 
             <button onClick={deleteUserBtn}>Delete User</button>
+            <a href="/diary">
+                <FcAdvance />
+            </a>
         </div>
     )
 }
