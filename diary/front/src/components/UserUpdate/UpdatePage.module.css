@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container > form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid gray;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.container > form > label {
+    margin: 10px 0;
+}
+
+.container > form > button {
+    margin: 10px 0;
+    border: none;
+    padding: 5px 10px;
+    background-color: #8c59b9;
+    color: aliceblue;
+}
+
+.container > button {
+    margin: 10px 0;
+    border: none;
+    padding: 5px 10px;
+    background-color: red;
+    color: aliceblue;
+}

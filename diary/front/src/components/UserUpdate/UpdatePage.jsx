@@ -4,6 +4,8 @@ import {useNavigate} from 'react-router-dom'
 import {updateUser} from '../../_actions/userAction'
 import axios from 'axios'
 
+import styles from './UpdatePage.module.css'
+
 const UpdatePage = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -35,10 +37,10 @@ const UpdatePage = () => {
     }
 
     return (
-        <div>
-            <h1>Update User</h1>
+        <div className={styles.container}>
+            <h1>유저정보 수정</h1>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="">Changed Password</label>
+                <label htmlFor="">비밀번호 수정</label>
                 <input type="password" name="password" value={password} onChange={handleInput} />
 
                 <button type="submit">update</button>
