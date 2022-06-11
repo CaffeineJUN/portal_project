@@ -18,17 +18,17 @@ const HomePage = () => {
 
     return (
         <div>
-            <h1>home</h1>
+            <h1>Home</h1>
             <div>
-                <a href="/login">login</a>
+                <a href="/login">Login</a>
             </div>
             <div>
-                <a href="/register">register</a>
+                <a href="/register">Register</a>
             </div>
             <div>
-                <a href="/diary">diary</a>
+                <a href="/diary">Diary</a>
             </div>
-            <button onClick={hadleLogout}>logout</button>
+            <button onClick={hadleLogout}>Logout</button>
         </div>
     )
 }

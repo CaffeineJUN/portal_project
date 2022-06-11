@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {useDispatch} from 'react-redux'
+import {useNavigate} from 'react-router-dom'
 import {diaryCreate, diaryShow} from '../../_actions/diaryAction'
 
 const DiaryPage = () => {
@@ -23,20 +24,19 @@ const DiaryPage = () => {
         for (let key of formData.keys()) {
             console.log(key)
         }
-
-        // FormData의 value 확인
+        // FormData의 value 확인-
         for (let value of formData.values()) {
             console.log(value)
         }
 
         dispatch(diaryCreate(formData)).then(res => {
             console.log(res)
+            window.location.replace('/diary')
         })
     }
 
     useEffect(() => {
         dispatch(diaryShow()).then(res => {
-            console.log(res.payload)
             setDiarys(res.payload)
         })
     }, [])
@@ -44,11 +44,11 @@ const DiaryPage = () => {
     const RenderDiarys =
         diarys &&
         diarys.map((diary, index) => {
-            console.log(diary)
+            const imgroot = `${diary.imagePath.substr(55)}`
             return (
                 <li key={index}>
                     <div>
-                        <img src={diary.imagePath} alt="img" />
+                        <img src={imgroot} alt="img" width="50px" height="50px" />
                     </div>
                     <div>{diary.content}</div>
                 </li>
@@ -57,6 +57,9 @@ const DiaryPage = () => {
 
     return (
         <div>
+            <div>
+                <a href="/">Home</a>
+            </div>
             <form onSubmit={hadleSubmit}>
                 <label htmlFor="">한줄일기</label>
                 <input type="text" name="text" value={text} onChange={handleInputChange} />
