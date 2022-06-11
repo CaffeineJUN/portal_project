@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container > form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container > form > label {
+    margin: 10px 0px;
+}
+
+.container > form > button {
+    border: none;
+    margin-top: 20px;
+    padding: 5px 10px;
+    background-color: #8c59b9;
+    color: aliceblue;
+}

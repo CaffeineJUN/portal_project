@@ -3,6 +3,8 @@ import {useDispatch} from 'react-redux'
 import {registUser} from '../../_actions/userAction'
 import {useNavigate} from 'react-router-dom'
 
+import styles from './RegisterPage.module.css'
+
 const RegisterPage = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -29,13 +31,13 @@ const RegisterPage = () => {
     }
 
     return (
-        <div>
-            <h1>Register</h1>
+        <div className={styles.container}>
+            <h1>회원가입</h1>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="">Id</label>
+                <label htmlFor="">ID</label>
                 <input type="text" name="userId" value={userId} onChange={handleInput} />
 
-                <label htmlFor="">Password</label>
+                <label htmlFor="">PASSWORD</label>
                 <input type="password" name="password" value={password} onChange={handleInput} />
 
                 <button type="submit">Register</button>
