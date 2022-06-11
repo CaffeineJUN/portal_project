@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react'
 import {useDispatch} from 'react-redux'
-import {diaryCreate} from '../../_actions/diaryAction'
+import {diaryCreate, diaryShow} from '../../_actions/diaryAction'
 
 const DiaryPage = () => {
     const dispatch = useDispatch()
     const [text, setText] = useState('')
+    const [diarys, setDiarys] = useState([])
 
     const handleInputChange = e => {
         setText(e.target.value)
@@ -33,7 +34,26 @@ const DiaryPage = () => {
         })
     }
 
-    useEffect(() => {}, [])
+    useEffect(() => {
+        dispatch(diaryShow()).then(res => {
+            console.log(res.payload)
+            setDiarys(res.payload)
+        })
+    }, [])
+
+    const RenderDiarys =
+        diarys &&
+        diarys.map((diary, index) => {
+            console.log(diary)
+            return (
+                <li key={index}>
+                    <div>
+                        <img src={diary.imagePath} alt="img" />
+                    </div>
+                    <div>{diary.content}</div>
+                </li>
+            )
+        })
 
     return (
         <div>
@@ -43,6 +63,7 @@ const DiaryPage = () => {
                 <input type="file" name="image" />
                 <button type="submit">쓰기</button>
             </form>
+            <ul>{RenderDiarys}</ul>
         </div>
     )
 }

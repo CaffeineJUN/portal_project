@@ -22,3 +22,4 @@ export const loginUser = async dataToSubmit => {
         payload: request,
     }
 }
+

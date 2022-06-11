@@ -4,3 +4,4 @@ export const LOGIN_USER = 'LOGIN_USER'
 
 // ====================앨범
 export const CREATE_DIARY = 'CREATE_DIARY'
+export const SHOW_DIARY = 'SHOW_DIARY'

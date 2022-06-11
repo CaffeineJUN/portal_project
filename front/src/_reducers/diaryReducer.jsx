@@ -9,6 +9,12 @@ function diaryReducer(state = {}, action) {
                 diary: action.payload,
             }
 
+        case types.SHOW_DIARY:
+            return {
+                ...state,
+                diarys: action.payload,
+            }
+
         default:
             return state
     }

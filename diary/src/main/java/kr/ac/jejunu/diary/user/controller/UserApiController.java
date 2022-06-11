@@ -73,7 +73,7 @@ public class UserApiController {
         if(session!=null){
             session.invalidate();
         }
-        
+
         return new ResponseDto(202,"사용자 제거가 완료되었습니다.");
     }
 }

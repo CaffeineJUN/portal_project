@@ -35,7 +35,8 @@ public class DiaryService {
         Diary diary = new Diary();
         diary.setContent(content);
         if (image != null) {
-            diary.setImagePath(path + "/images/" + save(image));
+//            diary.setImagePath(path + "/images/" + save(image));
+            diary.setImagePath(path + "../front/src/images/" + save(image));
         }
         diary.addUser(user1);
         diaryRepository.save(diary);

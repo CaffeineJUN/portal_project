@@ -16,3 +16,17 @@ export const diaryCreate = async dataToSubmit => {
         payload: request,
     }
 }
+
+export const diaryShow = () => {
+    const request = axios({
+        method: 'get',
+        url: '/api/user/diary',
+    }).then(res => {
+        return res.data
+    })
+
+    return {
+        type: types.SHOW_DIARY,
+        payload: request,
+    }
+}
